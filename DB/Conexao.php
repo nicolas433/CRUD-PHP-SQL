@@ -5,9 +5,9 @@ namespace DB;
 class Conexao {
     // Armazena a instância
     private static $instance;
-
+    
     // Dados de acesso MySQL
-    private static $connectURL = "mysql:dbname=employee;host=127.0.0.1";
+    private static $connectURL = "mysql:dbname=employees;host=127.0.0.1";
     private static $user = 'root';
     private static $password = '';
 
