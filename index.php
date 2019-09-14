@@ -10,12 +10,20 @@
     $qnt_result_pg = 20;
     $inicio = ($qnt_result_pg * $pagina)-$qnt_result_pg;
 
-    $previus_pg=$pagina_atual-1;
-    $next_pg=$pagina_atual+1;
+    if($pagina_atual==0){
+        $previus_pg=0;    
+    }else{
+        $previus_pg=$pagina_atual-1;
+    }
+
+    if($pagina_atual==30){
+        $next_pg=30;    
+    }else{
+        $next_pg=$pagina_atual+1;
+    }
     
+
     $sql_query = "SELECT * FROM cliente LIMIT $inicio, $qnt_result_pg";
- 
-     //WHERE cliente_id>".(30*$page_num).;
 
     $q = $conexao->prepare($sql_query);
    
@@ -30,7 +38,7 @@
         <script type="text/javascript" src="styles/bootstrap/js/jquery-3.4.1.min.js" </script>
         <script type="text/javascript" src="styles/bootstrap/js/bootstrap.min.js" </script>
     </head>
-    <body>  
+    <body style="background: #454d55">  
         <div id = main-container>
             <?php                
                 if($q->execute()){
@@ -91,8 +99,12 @@
                         </table>";
                 }
             ?>  
-            <a href='index.php?pagina=$previus_pg'>anterior</a>
-            <a href='index.php?pagina=$next_pg'>proxima</a> 
+            <?php
+                echo "
+                    <input type='button' class='btn btn-secondary btn-lg btn-block' onclick=location.href='index.php?pagina=$previus_pg'; value='Anterior' />
+                    <input type='button' class='btn btn-secondary btn-lg btn-block' onclick=location.href='index.php?pagina=$next_pg'; value='Proxima' />
+                    "
+            ?>
         </div>
     </body>
 </html>
