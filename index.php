@@ -38,8 +38,21 @@
         <script type="text/javascript" src="styles/bootstrap/js/jquery-3.4.1.min.js" </script>
         <script type="text/javascript" src="styles/bootstrap/js/bootstrap.min.js" </script>
     </head>
-    <body style="background: #454d55">  
-        <div id = main-container>
+    <body style='background: #454d55'>  
+        <div id = 'add-container'>
+            <form action='FORMaddclient.php' 
+                  method='GET'>
+                               
+                <input  class="btn btn-success" 
+                        type='submit' 
+                        value='CREATE'
+                        style=' width: 100%;
+                               margin-top: 5px'
+                >
+                </input>
+            </form>
+        </div>
+        <div id = 'main-container'>
             <?php                
                 if($q->execute()){
                 echo "
@@ -55,6 +68,7 @@
                             <th scope='col'>ativo</th>
                             <th scope='col'>data_criacao</th>
                             <th scope='col'>ultima_atualizacao</th>
+                            <th scope='col'>Ações</th>
                         </tr>
                         
                     </thead>
@@ -91,6 +105,21 @@
                                 </td>
                                 
                                 <td>".$linha['ultima_atualizacao']."
+                                </td>
+                                <td>
+                                    <input type='button'  
+                                        onclick=location.href='index.php?pagina=$previus_pg' 
+                                        class='btn btn-danger'
+                                        value='DELETE' 
+                                        style='margin-bottom: 5px;
+                                                width: 87px'
+                                    />
+                                    <input type='button'  
+                                        onclick=location.href='index.php?pagina=$previus_pg'
+                                        class='btn btn-warning' 
+                                        value='UPDATE' 
+                                        style='width: 87px'
+                                    />
                                 </td>
                             </tr>
                         ";
