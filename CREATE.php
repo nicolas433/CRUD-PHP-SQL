@@ -21,10 +21,13 @@
         while($linha = $q->fetch(PDO::FETCH_ASSOC)){
 
             //AQUI
-            $nomee = $linha['COLUMN_NAME'];
-            $nome = $_POST($nome);
+            $nome = $linha['COLUMN_NAME'];
+            $nome = $_POST[$nome];
+
             echo $nome;
+            die();
             array_push($data, $nome);
+            
             //ATÉ AQUI
 
             $sql .= $linha['COLUMN_NAME'].", ";

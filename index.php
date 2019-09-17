@@ -6,8 +6,7 @@
     */
 
     //Pagina selecionada (da pra melhorar)
-    $tabela = "cliente"; 
-    $tabela = $_POST["tabela"];
+    $tabela = isset( $_POST["tabela"] ) ? $_POST["tabela"] : "cliente";
     if($tabela == "Choose..."){
         $tabela = "cliente";
     }
@@ -22,6 +21,7 @@
     $pagina = (!empty($pagina_atual)) ? $pagina_atual : 1;
     $qnt_result_pg = 20;
     $inicio = ($qnt_result_pg * $pagina)-$qnt_result_pg;
+
     if($pagina_atual==0){
         $previus_pg=0;    
     }else{
@@ -205,6 +205,8 @@
                     </table>
                         ";
                 }
+
+                    //Preciso arrumar isso
                     echo "
                         <input type='button' class='btn btn-secondary btn-lg btn-block' onclick=location.href='index.php?pagina=$previus_pg'; value='Anterior' />
                         <input type='button' class='btn btn-secondary btn-lg btn-block' onclick=location.href='index.php?pagina=$next_pg'; value='Proxima' />
