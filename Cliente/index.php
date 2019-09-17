@@ -1,5 +1,12 @@
 <?php
-    require_once(__DIR__."/App/autoload.php");
+    /*
+    date_default_timezone_set("America/Fortaleza");
+    $data_criacao = date("d-m-Y H:i:s");
+    echo $data_criacao;
+    */
+
+
+    require("../App/autoload.php");
 
     use DB\Conexao as Banco;
     
@@ -16,8 +23,8 @@
         $previus_pg=$pagina_atual-1;
     }
 
-    if($pagina_atual==30){
-        $next_pg=30;    
+    if($pagina_atual==32){
+        $next_pg=32;    
     }else{
         $next_pg=$pagina_atual+1;
     }
@@ -34,13 +41,13 @@
 <html>
     <head>
         <meta name="viewport" content="width-device-width, initial-scale=1.0" />
-        <link rel="stylesheet" type="text/css" href="styles/bootstrap/css/bootstrap.min.css" />
-        <script type="text/javascript" src="styles/bootstrap/js/jquery-3.4.1.min.js" </script>
-        <script type="text/javascript" src="styles/bootstrap/js/bootstrap.min.js" </script>
+        <link rel="stylesheet" type="text/css" href="../styles/bootstrap/css/bootstrap.min.css" />
+        <script type="text/javascript" src="../styles/bootstrap/js/jquery-3.4.1.min.js" </script>
+        <script type="text/javascript" src="../styles/bootstrap/js/bootstrap.min.js" </script>
     </head>
     <body style='background: #454d55'>  
         <div id = 'add-container'>
-            <form action='FORMaddclient.php' 
+            <form action='FORMcliente.php' 
                   method='GET'>
                                
                 <input  class="btn btn-success" 
@@ -77,7 +84,7 @@
                     ";
                     while($linha = $q->fetch(PDO::FETCH_ASSOC)){
                     //die($linha);
-                        
+                        $id = $linha['cliente_id'];
                         echo "
                             <tr>
                                 <td>".$linha['cliente_id']."
@@ -108,14 +115,14 @@
                                 </td>
                                 <td>
                                     <input type='button'  
-                                        onclick=location.href='index.php?pagina=$previus_pg' 
+                                        onclick=location.href='deleteCliente.php?id=$id' 
                                         class='btn btn-danger'
                                         value='DELETE' 
                                         style='margin-bottom: 5px;
                                                 width: 87px'
                                     />
                                     <input type='button'  
-                                        onclick=location.href='index.php?pagina=$previus_pg'
+                                        onclick=location.href='FORMcliente.php?id=$id&action=1'
                                         class='btn btn-warning' 
                                         value='UPDATE' 
                                         style='width: 87px'

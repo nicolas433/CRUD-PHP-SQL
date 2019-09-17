@@ -12,7 +12,7 @@
                 color: white'>  
 
 
-        <form method='POST' action='addClient.php'>
+        <form method='POST' action='addCliente.php'>
             <p>Id da loja:</p>
             <label for="um">Um</label>
             <input type="radio" name="loja_id" id="um" value="1">
