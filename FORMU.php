@@ -3,15 +3,23 @@
     use DB\Conexao as Banco;
     $conexao = Banco::getInstance();
 
-    $tabela = $_POST["tabela"];
-
-    if($tabela == "Choose..."){
-        $tabela = "cliente";
+    if(!isset($_GET["id"])){
+        echo "<center><h1>Página não encontrada!</h1></center>";
+        die();
     }
-    
+    if(!isset($_GET["tabela"])){
+        echo "<center><h1>Página não encontrada!</h1></center>";
+        die();
+    }
 
-    $sql_query = "SELECT COLUMN_NAME, DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = '$tabela'";
-    $q = $conexao->prepare($sql_query);
+    $tabela = $_GET["tabela"];
+    $id = $_GET["id"];
+
+    $idd = $tabela."_id";
+
+    $sqlid_query = "SELECT * FROM $tabela WHERE $idd = $id";
+    $q = $conexao->prepare($sqlid_query);
+
 
 ?>
 <html>
@@ -29,15 +37,26 @@
             <?php
                 if($q->execute()){
                     while($linha = $q->fetch(PDO::FETCH_ASSOC)){
+                        foreach($linha as $chave => $valor){
+                            echo "<label for=".$chave.">".$chave.": 
+                                <input value='".$valor."' type='text' class='form-control form-control-lg' name=".$chave."/>" ;
+                            echo "</br>";
+                        }
+
+
+
+
+
+
                         /*if(
                            $linha['COLUMN_NAME']!= "data_criacao" and
                            $linha['COLUMN_NAME']!= "ultima_atualizacao" and
                            $linha['COLUMN_NAME']!= "ativo" and
-                           $linha['COLUMN_NAME']!= $tabela."_id" ){*/
+                           $linha['COLUMN_NAME']!= $tabela."_id" ){
                                echo "<label for=".$linha['COLUMN_NAME'].">".$linha['COLUMN_NAME'].": 
-                               <input type='text' class='form-control form-control-lg' name=".$linha['COLUMN_NAME']."/>" ;
-                               echo "</br>";
-                           /*}*/
+                               <input value='' type='text' class='form-control form-control-lg' name=".$linha['COLUMN_NAME']."/>" ;
+                               
+                           }*/
 
                     }
                 }

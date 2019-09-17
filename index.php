@@ -191,7 +191,7 @@
                                                         width: 87px'
                                             />
                                             <input type='button'  
-                                                onclick=location.href='FORMUC.php'
+                                                onclick=location.href='FORMU.php?id=$id&tabela=$tabela'
                                                 class='btn btn-warning' 
                                                 value='UPDATE' 
                                                 style='width: 87px'

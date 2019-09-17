@@ -15,4 +15,4 @@
     $sql .= ";SET FOREIGN_KEY_CHECKS = 1;";
     $q = $pdo->prepare($sql);
     $q->execute(array($id));
-    header("Location: index.php?$tabelaa=$tabela");
+    header("Location: index.php");
