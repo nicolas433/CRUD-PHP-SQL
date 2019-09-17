@@ -46,7 +46,7 @@
     $gg[0] = "teste";
     $gambcont = 1;
     $primeiro_elemento;
-    
+
     if($q->execute()){
         while($linha = $q->fetch(PDO::FETCH_ASSOC)){
             foreach($linha as $chave => $valor){
@@ -206,8 +206,8 @@
                         ";
                 }
                     echo "
-                        <input type='button' class='btn btn-secondary btn-lg btn-block' onclick=location.href='READ.php?pagina=$previus_pg'; value='Anterior' />
-                        <input type='button' class='btn btn-secondary btn-lg btn-block' onclick=location.href='READ.php?pagina=$next_pg'; value='Proxima' />
+                        <input type='button' class='btn btn-secondary btn-lg btn-block' onclick=location.href='index.php?pagina=$previus_pg'; value='Anterior' />
+                        <input type='button' class='btn btn-secondary btn-lg btn-block' onclick=location.href='index.php?pagina=$next_pg'; value='Proxima' />
                         ";
             ?>
         </div>
