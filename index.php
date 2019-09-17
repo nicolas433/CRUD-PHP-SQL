@@ -117,7 +117,7 @@
         </div> 
 
 
-        <form method="POST" action="FORMUC.php">
+        <form method="POST" action="FORMC.php">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <button class="btn btn-light" type="submit">CREATE</button>

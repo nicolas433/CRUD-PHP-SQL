@@ -29,16 +29,9 @@
             <?php
                 if($q->execute()){
                     while($linha = $q->fetch(PDO::FETCH_ASSOC)){
-                        /*if(
-                           $linha['COLUMN_NAME']!= "data_criacao" and
-                           $linha['COLUMN_NAME']!= "ultima_atualizacao" and
-                           $linha['COLUMN_NAME']!= "ativo" and
-                           $linha['COLUMN_NAME']!= $tabela."_id" ){*/
-                               echo "<label for=".$linha['COLUMN_NAME'].">".$linha['COLUMN_NAME'].": 
-                               <input type='text' class='form-control form-control-lg' name=".$linha['COLUMN_NAME']."/>" ;
-                               echo "</br>";
-                           /*}*/
-
+                        echo "<label for=".$linha['COLUMN_NAME'].">".$linha['COLUMN_NAME'].": 
+                        <input type='text' class='form-control form-control-lg' name=".$linha['COLUMN_NAME'].">" ;
+                        echo "</br>";
                     }
                 }
                 echo "<input type='hidden' name='tabela' value='$tabela'>";

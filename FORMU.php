@@ -33,13 +33,13 @@
                 color: white'>  
 
 
-        <form method='POST' action='CREATE.php'>
+        <form method='POST' action='UPDATE.php'>
             <?php
                 if($q->execute()){
                     while($linha = $q->fetch(PDO::FETCH_ASSOC)){
                         foreach($linha as $chave => $valor){
                             echo "<label for=".$chave.">".$chave.": 
-                                <input value='".$valor."' type='text' class='form-control form-control-lg' name=".$chave."/>" ;
+                                <input value='".$valor."' type='text' class='form-control form-control-lg' name=$chave>" ;
                             echo "</br>";
                         }
 
@@ -61,9 +61,10 @@
                     }
                 }
                 echo "<input type='hidden' name='tabela' value='$tabela'>";
+                echo "<input type='hidden' name='id' value='$id'>";
             ?>
             
-            <input type='submit' value='CREATE'>
+            <input type='submit' value='UPDATE'>
         </form>
     </body>
 </html>

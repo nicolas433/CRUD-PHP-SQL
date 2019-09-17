@@ -21,3 +21,25 @@
 
     header("Location: index.php");
     */
+
+
+
+
+
+
+
+
+
+                            /*if(
+                           $linha['COLUMN_NAME']!= "data_criacao" and
+                           $linha['COLUMN_NAME']!= "ultima_atualizacao" and
+                           $linha['COLUMN_NAME']!= "ativo" and
+                           $linha['COLUMN_NAME']!= $tabela."_id" ){*/
+
+
+
+
+
+
+
+
