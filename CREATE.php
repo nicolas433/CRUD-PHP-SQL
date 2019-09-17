@@ -56,14 +56,12 @@
     $count .= ')"';
     $sql .= $count;
 
+    echo $sql;
 
     foreach($data as $chave => $valor){
         echo "$chave: $valor \n";
     }
 
-    $stmt = $conexao->prepare($sql);
-
+    $stmt= $conexao->prepare($sql);
     $stmt->execute($data);
-    
-    
-    
+    //header("Location: index.php");
