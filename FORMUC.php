@@ -3,17 +3,24 @@
     use DB\Conexao as Banco;
     $conexao = Banco::getInstance();
 
+    $tabela = $_POST["tabela"];
 
     if($tabela == "Choose..."){
         $tabela = "cliente";
     }
-    $tabela = $_POST["tabela"];
     
 
-    $sql_query = "SELECT * FROM $tabela LIMIT $inicio, $qnt_result_pg";
+    $sql_query = "SELECT COLUMN_NAME, DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = '$tabela'";
     $q = $conexao->prepare($sql_query);
 
+    if($q->execute()){
+        while($linha = $q->fetch(PDO::FETCH_ASSOC)){
+            print_r($linha);
+            echo "</br>";
+        }
+    }
 
+    /*
     $gg = [];
     $gg[0] = "teste";
     $data_type;
@@ -42,6 +49,11 @@
             break;
         }
     }
+    */
+
+
+
+    //SELECT DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'aluguel' AND COLUMN_NAME = 'aluguel_id'
 
     
 

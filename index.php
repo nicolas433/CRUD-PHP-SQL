@@ -46,8 +46,7 @@
     $gg[0] = "teste";
     $gambcont = 1;
     $primeiro_elemento;
-
-
+    
     if($q->execute()){
         while($linha = $q->fetch(PDO::FETCH_ASSOC)){
             foreach($linha as $chave => $valor){
@@ -59,7 +58,6 @@
                 }
 
                 if($chave == $primeiro_elemento and $gambcont > 2){
-                    echo "saiu@!!@@";
                     break;
                 }else{                  
                     $gambcont ++;
