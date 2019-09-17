@@ -32,19 +32,28 @@
 
     $update_vector = [];
 
+    $sql = "UPDATE users SET ";
 
     if($q->execute()){
         while($linha = $q->fetch(PDO::FETCH_ASSOC)){
             foreach($linha as $chave => $valor){
                 $teste = $_POST[$chave];
-                array_push($update_vector, $teste); 
+                array_push($update_vector, $teste);
+                $sql .= "$chave=?, "; 
             }
         }
     }
+    $sql = substr($sql, 0, -2); 
+    $sql .= " WHERE id = ?";
+    array_push($update_vector, $id);
+    
 
-    foreach($update_vector as $chave => $valor){
-        echo $valor;
-    }
+    $stmt = $conexao->prepare($sql);
+    $stmt->execute($update_vector);
+    header("Location: index.php");
+
+    //$dpo->prepare($sql)->execute($update_vector);
+
 
 
     

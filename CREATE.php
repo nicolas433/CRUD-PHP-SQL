@@ -61,7 +61,7 @@
         echo "$chave: $valor \n";
     }
 
-    $stmt= $conexao->prepare($sql);
+    $stmt = $conexao->prepare($sql);
 
     $stmt->execute($data);
     
